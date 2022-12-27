@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServicesImpl implements UserServices{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepositories userRepositories;
 

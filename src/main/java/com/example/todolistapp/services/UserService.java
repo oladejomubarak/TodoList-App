@@ -7,7 +7,7 @@ import com.example.todolistapp.dtos.response.CreateUserResponse;
 import com.example.todolistapp.dtos.response.GetResponse;
 import com.example.todolistapp.dtos.response.LoginResponse;
 
-public interface UserServices {
+public interface UserService {
     CreateUserResponse createUser(CreateUserRequest createUserRequest);
     LoginResponse userLogin(LoginRequest loginRequest);
     GetResponse updateUser(UserUpdateRequest userUpdateRequest);
