@@ -39,10 +39,11 @@ public class UserServiceImpl implements UserService {
         user.setPassword(createUserRequest.getPassword());
 
 
-        userRepositories.save(user);
+        User savedUser = userRepositories.save(user);
 
         CreateUserResponse createUserResponse = new CreateUserResponse();
         createUserResponse.setMessage("User created successfully");
+        createUserResponse.setId(savedUser.getId());
         createUserResponse.setStatusCode("201");
         return createUserResponse;
     }
