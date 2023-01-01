@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class TodoServicesImpl implements TodoServices{
@@ -64,22 +65,29 @@ public class TodoServicesImpl implements TodoServices{
     }
 
     @Override
-    public GetResponse viewTodoById(int id) {
-        return null;
+    public Todo viewTodoById(String id) {
+        return todoRepository.findById(id).orElseThrow(()->
+                new RuntimeException("todo with the id"+ id +"not found"));
     }
 
     @Override
-    public GetResponse viewTodoByDate(LocalDateTime dateAndTime) {
-        return null;
+    public List<Todo> viewTodoByDate(String date) {
+        Todo foundTodo = todoRepository.findTodoByDate(LocalDate.parse(date)).orElseThrow(()->
+                new RuntimeException("There is no task scheduled for the date"+ date +"\nTry another date"));
+        List<Todo> todoList = List.of(foundTodo);
+
+        return todoList;
     }
 
     @Override
-    public GetResponse deleteTodo(int id) {
-        return null;
+    public GetResponse deleteTodo(String id) {
+        todoRepository.deleteById(id);
+        return new GetResponse("Todo deleted successfully");
     }
 
     @Override
     public GetResponse clearTodo() {
-        return null;
+        todoRepository.deleteAll();
+        return new GetResponse("All todo have been cleared");
     }
 }
