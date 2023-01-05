@@ -45,19 +45,19 @@ class UserServiceImplTest {
         createUserRequest2.setPassword("Odeshina@100");
         createUserRequest2.setPhoneNumber("08062768079999");
 
-//        createUserRequest3 = new CreateUserRequest();
-//        createUserRequest3.setFirstName("Nb");
-//        createUserRequest3.setLastName("Bla");
-//        createUserRequest3.setEmail("oladejomubarak@yahoo.com");
-//        createUserRequest3.setPassword("Adeshina@123");
-//        createUserRequest3.setPhoneNumber("08162768079913");
+        createUserRequest3 = new CreateUserRequest();
+        createUserRequest3.setFirstName("Nb");
+        createUserRequest3.setLastName("Bla");
+        createUserRequest3.setEmail("oladejomubarak@yahoo.com");
+        createUserRequest3.setPassword("Adeshina@123");
+        createUserRequest3.setPhoneNumber("08162768079913");
 
 
     }
 
     @Test
     void testUserCanRegister() {
-        CreateUserResponse createUserResponse = userService.createUser(createUserRequest);
+        CreateUserResponse createUserResponse = userService.createUser(createUserRequest3);
 //        CreateUserResponse createUserResponse1 = userService.createUser(createUserRequest1);
 //        CreateUserResponse createUserResponse2 = userService.createUser(createUserRequest2);
         assertNotNull(createUserResponse);
@@ -81,7 +81,7 @@ class UserServiceImplTest {
     @Test
     void testThatUserDetailsCanBeUpdated() {
         UserUpdateRequest userUpdateRequest = new UserUpdateRequest();
-        userUpdateRequest.setId("1");
+        userUpdateRequest.setId("63b3e1c2099cb3202453308f");
         userUpdateRequest.setEmail("Ilovewritingjava@gmail.com");
 
         GetResponse getResponse = userService.updateUser(userUpdateRequest);
@@ -90,7 +90,7 @@ class UserServiceImplTest {
 
     @Test
     void testThatUserCanBeDeleted() {
-        GetResponse deleteUser = userService.deleteUser("2");
+        GetResponse deleteUser = userService.deleteUser("63b3e39a16c1c52911589509");
         assertEquals("User deleted successfully", deleteUser.getMessage());
     }
 }

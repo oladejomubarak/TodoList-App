@@ -2,6 +2,7 @@ package com.example.todolistapp.data.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class User {
     private String email;
     private String password;
     private String phoneNumber;
+    @DBRef
     List<Todo> todoList = new ArrayList<>();
 
 }

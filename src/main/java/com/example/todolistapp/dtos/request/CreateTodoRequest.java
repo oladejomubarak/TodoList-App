@@ -1,13 +1,8 @@
 package com.example.todolistapp.dtos.request;
 
-import com.example.todolistapp.data.models.DateAndTime;
 import com.example.todolistapp.data.models.EventCategories;
 import com.example.todolistapp.data.models.EventStatus;
 import lombok.Data;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Data
 public class CreateTodoRequest {

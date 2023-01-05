@@ -6,12 +6,10 @@ import com.example.todolistapp.dtos.request.CreateTodoRequest;
 import com.example.todolistapp.dtos.request.TodoUpdateRequest;
 import com.example.todolistapp.dtos.response.CreateTodoResponse;
 import com.example.todolistapp.dtos.response.GetResponse;
-import com.example.todolistapp.dtos.response.TodoUpdateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -20,16 +18,19 @@ import java.util.List;
 public class TodoServicesImpl implements TodoServices{
     @Autowired
     private TodoRepository todoRepository;
-    private final Todo todo = new Todo();
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
 
 
     @Override
     public CreateTodoResponse createTodo(CreateTodoRequest createTodoRequest) {
+        Todo todo = new Todo();
     todo.setTitle(createTodoRequest.getTitle());
     todo.setContent(createTodoRequest.getContent());
     todo.setEventCategory(createTodoRequest.getEventCategory());
-    todo.setDate(LocalDate.parse(createTodoRequest.getDate()));
-    todo.setTime(LocalTime.parse(createTodoRequest.getTime()));
+    todo.setDate(LocalDate.parse(createTodoRequest.getDate(), dateFormatter));
+    todo.setTime(LocalTime.parse(createTodoRequest.getTime(), timeFormatter));
     todo.setEventStatus(createTodoRequest.getEventStatus());
 //    todo.setDueDateAndTime(createTodoRequest.getMonth());
 //    todo.setDueDateAndTime(createTodoRequest.getDay());
@@ -56,9 +57,9 @@ public class TodoServicesImpl implements TodoServices{
          createdTodo.setEventCategory(todoUpdateRequest.getEventCategory() != null ? todoUpdateRequest.getEventCategory()
                  : createdTodo.getEventCategory());
          createdTodo.setDate(todoUpdateRequest.getDate() != null && !todoUpdateRequest.getDate().equals("")
-                 ? LocalDate.parse(todoUpdateRequest.getDate()) : createdTodo.getDate());
+                 ? LocalDate.parse(todoUpdateRequest.getDate(), dateFormatter) : createdTodo.getDate());
          createdTodo.setTime(todoUpdateRequest.getTime() != null && !todoUpdateRequest.getTime().equals("")
-                 ? LocalTime.parse(todoUpdateRequest.getTime()) : createdTodo.getTime());
+                 ? LocalTime.parse(todoUpdateRequest.getTime(), timeFormatter) : createdTodo.getTime());
          createdTodo.setEventStatus(createdTodo.getEventStatus());
         todoRepository.save(createdTodo);
         return new GetResponse("todo updated successfully");
@@ -72,7 +73,9 @@ public class TodoServicesImpl implements TodoServices{
 
     @Override
     public List<Todo> viewTodoByDate(String date) {
-        Todo foundTodo = todoRepository.findTodoByDate(LocalDate.parse(date)).orElseThrow(()->
+        LocalDate theDate = LocalDate.parse(date, dateFormatter);
+
+        Todo foundTodo = todoRepository.findTodoByDate(theDate).orElseThrow(()->
                 new RuntimeException("There is no task scheduled for the date"+ date +"\nTry another date"));
         List<Todo> todoList = List.of(foundTodo);
 
