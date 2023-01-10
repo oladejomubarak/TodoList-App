@@ -61,12 +61,13 @@ class TodoServicesImplTest {
         Todo todoToBeViewed = todoServices.viewTodoById("63b59032da4c3111429801af");
         assertEquals("I have demo exam", todoToBeViewed.getContent());
     }
-    @Test void testThatTodoCanBeViewedByDate(){
-        var viewByDate = todoServices.viewTodoByDate("25/02/2023");
-
-        //var todoListForTheDay = List.of(viewByDate);
-        System.out.println(viewByDate);
-    }
+//    @Test void testThatTodoCanBeViewedByDate(){
+//        var viewByDate = todoServices.viewTodoByDate("20/01/2023");
+//
+//
+//        //var todoListForTheDay = List.of(viewByDate);
+//        System.out.println(viewByDate);
+//    }
     @Test void testThatTodoCanBeDeleted(){
         GetResponse deleteTodo = todoServices.deleteTodo("63b5938a9baed3429bca5b4b");
         assertEquals("Todo deleted successfully", deleteTodo.getMessage());

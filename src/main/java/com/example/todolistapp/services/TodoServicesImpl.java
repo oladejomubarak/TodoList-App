@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -71,16 +72,19 @@ public class TodoServicesImpl implements TodoServices{
                 new RuntimeException("todo with the id"+ id +"not found"));
     }
 
-    @Override
-    public List<Todo> viewTodoByDate(String date) {
-        LocalDate theDate = LocalDate.parse(date, dateFormatter);
-
-        Todo foundTodo = todoRepository.findTodoByDate(theDate).orElseThrow(()->
-                new RuntimeException("There is no task scheduled for the date"+ date +"\nTry another date"));
-        List<Todo> todoList = List.of(foundTodo);
-
-        return todoList;
-    }
+//    @Override
+//    public List<Todo> viewTodoByDate(String date) {
+//        List <Todo> todoLists = new ArrayList<>();
+//        LocalDate theDate = LocalDate.parse(date, dateFormatter);
+//
+//        Todo foundTodo = todoRepository.findTodoByDate(theDate).orElseThrow(()->
+//                new RuntimeException("There is no task scheduled for the date"+ date +"\nTry another date"));
+//        todoLists.add(foundTodo);
+//
+//        //List<Todo> todoList = List.of(foundTodo);
+//
+//        return todoLists;
+//    }
 
     @Override
     public GetResponse deleteTodo(String id) {

@@ -14,7 +14,7 @@ public interface TodoServices {
     CreateTodoResponse createTodo(CreateTodoRequest createTodoRequest);
     GetResponse updateTodo(TodoUpdateRequest todoUpdateRequest);
     Todo viewTodoById(String id);
-    List<Todo> viewTodoByDate(String date);
+//    List<Todo> viewTodoByDate(String date);
     GetResponse deleteTodo(String id);
     GetResponse clearTodo();
 }
