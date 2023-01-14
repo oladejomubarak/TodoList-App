@@ -81,8 +81,8 @@ class UserServiceImplTest {
     @Test
     void testThatUserDetailsCanBeUpdated() {
         UserUpdateRequest userUpdateRequest = new UserUpdateRequest();
-        userUpdateRequest.setId("63b3e1c2099cb3202453308f");
-        userUpdateRequest.setEmail("Ilovewritingjava@gmail.com");
+        userUpdateRequest.setId("63b3e4a05ba5a06f89a0f3dd");
+        userUpdateRequest.setEmail("Ilovwritingjav@gmail.com");
 
         GetResponse getResponse = userService.updateUser(userUpdateRequest);
         assertEquals("User detail updated successfully", getResponse.getMessage());
