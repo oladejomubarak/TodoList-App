@@ -16,5 +16,4 @@ public class CreateTodoRequest {
 //    private DateAndTime month;
 //    private DateAndTime day;
 //    private DateAndTime minute;
-//    private DateAndTime hour;
 }
