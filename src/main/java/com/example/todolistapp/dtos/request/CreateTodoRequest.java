@@ -12,7 +12,5 @@ public class CreateTodoRequest {
     private String content;
     private String date;
     private String time;
-//    private DateAndTime year;
-
 
 }
