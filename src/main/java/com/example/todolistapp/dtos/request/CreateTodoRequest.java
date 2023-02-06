@@ -14,6 +14,5 @@ public class CreateTodoRequest {
     private String time;
 //    private DateAndTime year;
 //    private DateAndTime month;
-//    private DateAndTime day;
-//    private DateAndTime minute;
+
 }
