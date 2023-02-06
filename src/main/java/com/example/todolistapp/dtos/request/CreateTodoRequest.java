@@ -13,6 +13,6 @@ public class CreateTodoRequest {
     private String date;
     private String time;
 //    private DateAndTime year;
-//    private DateAndTime month;
+
 
 }
